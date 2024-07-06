@@ -7,7 +7,7 @@ export interface Sale extends RaRecord {
 }
 
 export interface Company extends RaRecord {
-    id: number,
+    id: number;
     name: string;
     logo: string;
     sector: string;
@@ -26,12 +26,12 @@ export interface Company extends RaRecord {
 }
 
 export interface Contact extends RaRecord {
-    id: number,
-    phone_number: number,
+    id: number;
+    phone_number: string;
     first_name: string;
     last_name: string;
     title: string;
-    company: Identifier,
+    company: Company;
     company_id: Identifier;
     email: string;
     avatar?: string;

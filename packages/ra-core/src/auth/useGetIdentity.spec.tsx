@@ -20,9 +20,9 @@ describe('useGetIdentity', () => {
         render(<ResetIdentity />);
         expect(await screen.findByText('John Doe')).not.toBeNull();
         const input = screen.getByDisplayValue('John Doe');
-        fireEvent.change(input, { target: { value: 'Jane Doe' } });
+        fireEvent.change(input, { target: { value: 'Gaurav Kumar' } });
         fireEvent.click(screen.getByText('Save'));
-        await screen.findByText('Jane Doe');
+        await screen.findByText('Gaurav Kumar');
         expect(screen.queryByText('John Doe')).toBeNull();
     });
     it('should not throw errors when there is no authProvider.getIdentity', async () => {

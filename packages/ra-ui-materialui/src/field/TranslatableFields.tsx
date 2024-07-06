@@ -2,12 +2,12 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import { ReactElement, ReactNode } from 'react';
 import {
-    TranslatableContextProvider,
-    useTranslatable,
-    UseTranslatableOptions,
-    RaRecord,
-    useRecordContext,
-    useResourceContext,
+  TranslatableContextProvider,
+  useTranslatable,
+  UseTranslatableOptions,
+  RaRecord,
+  useRecordContext,
+  useResourceContext,
 } from 'ra-core';
 import { TranslatableFieldsTabs } from './TranslatableFieldsTabs';
 import { TranslatableFieldsTabContent } from './TranslatableFieldsTabContent';
@@ -18,12 +18,12 @@ import { TranslatableFieldsTabContent } from './TranslatableFieldsTabContent';
  * {
  *     name: {
  *         en: 'The english value',
- *         fr: 'The french value',
+ *         fr: 'The English value',
  *         tlh: 'The klingon value',
  *     },
  *     description: {
  *         en: 'The english value',
- *         fr: 'The french value',
+ *         fr: 'The English value',
  *         tlh: 'The klingon value',
  *     }
  * }
@@ -67,67 +67,67 @@ import { TranslatableFieldsTabContent } from './TranslatableFieldsTabContent';
  * @param {ReactElement} props.selector The element responsible for selecting a locale. Defaults to Material UI tabs.
  */
 export const TranslatableFields = (
-    props: TranslatableFieldsProps
+  props: TranslatableFieldsProps
 ): ReactElement => {
-    const {
-        defaultLocale,
-        locales,
-        groupKey = '',
-        selector = <TranslatableFieldsTabs groupKey={groupKey} />,
-        children,
-        className,
-        resource: resourceProp,
-    } = props;
-    const record = useRecordContext(props);
-    if (!record) {
-        throw new Error(
-            `<TranslatableFields> was called outside of a RecordContext and without a record prop. You must set the record prop.`
-        );
-    }
-    const resource = useResourceContext(props);
-    if (!resource) {
-        throw new Error(
-            `<TranslatableFields> was called outside of a ResourceContext and without a record prop. You must set the resource prop.`
-        );
-    }
-    const context = useTranslatable({ defaultLocale, locales });
-
-    return (
-        <Root className={className}>
-            <TranslatableContextProvider value={context}>
-                {selector}
-                {locales.map(locale => (
-                    <TranslatableFieldsTabContent
-                        key={locale}
-                        locale={locale}
-                        record={record}
-                        resource={resourceProp}
-                        groupKey={groupKey}
-                    >
-                        {children}
-                    </TranslatableFieldsTabContent>
-                ))}
-            </TranslatableContextProvider>
-        </Root>
+  const {
+    defaultLocale,
+    locales,
+    groupKey = '',
+    selector = <TranslatableFieldsTabs groupKey={groupKey} />,
+    children,
+    className,
+    resource: resourceProp,
+  } = props;
+  const record = useRecordContext(props);
+  if (!record) {
+    throw new Error(
+      `<TranslatableFields> was called outside of a RecordContext and without a record prop. You must set the record prop.`
     );
+  }
+  const resource = useResourceContext(props);
+  if (!resource) {
+    throw new Error(
+      `<TranslatableFields> was called outside of a ResourceContext and without a record prop. You must set the resource prop.`
+    );
+  }
+  const context = useTranslatable({ defaultLocale, locales });
+
+  return (
+    <Root className={className}>
+      <TranslatableContextProvider value={context}>
+        {selector}
+        {locales.map((locale) => (
+          <TranslatableFieldsTabContent
+            key={locale}
+            locale={locale}
+            record={record}
+            resource={resourceProp}
+            groupKey={groupKey}
+          >
+            {children}
+          </TranslatableFieldsTabContent>
+        ))}
+      </TranslatableContextProvider>
+    </Root>
+  );
 };
 
 export interface TranslatableFieldsProps extends UseTranslatableOptions {
-    children: ReactNode;
-    className?: string;
-    record?: RaRecord;
-    resource?: string;
-    selector?: ReactElement;
-    groupKey?: string;
+  children: ReactNode;
+  className?: string;
+  record?: RaRecord;
+  resource?: string;
+  selector?: ReactElement;
+  groupKey?: string;
 }
 
 const PREFIX = 'RaTranslatableFields';
 
 const Root = styled('div', {
-    name: PREFIX,
-    overridesResolver: (props, styles) => styles.root,
+  name: PREFIX,
+  overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
-    flexGrow: 1,
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(0.5),
+  flexGrow: 1,
+  marginTop: theme.spacing(1),
+  marginBottom: theme.spacing(0.5),
 }));

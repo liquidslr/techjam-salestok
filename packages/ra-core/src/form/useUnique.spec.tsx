@@ -65,7 +65,7 @@ describe('useUnique', () => {
                           total: 1,
                       })
                     : Promise.resolve({
-                          data: [{ id: 2, name: 'Jane Doe' }],
+                          data: [{ id: 2, name: 'Gaurav Kumar' }],
                           total: 1,
                       })
             ),
@@ -88,16 +88,16 @@ describe('useUnique', () => {
         );
         await new Promise(resolve => setTimeout(resolve, 500));
         fireEvent.change(await screen.findByDisplayValue('John Doe'), {
-            target: { value: 'Jane Doe' },
+            target: { value: 'Gaurav Kumar' },
         });
-        fireEvent.blur(await screen.findByDisplayValue('Jane Doe'));
+        fireEvent.blur(await screen.findByDisplayValue('Gaurav Kumar'));
         fireEvent.click(screen.getByText('Submit'));
 
         await waitFor(
             () =>
                 expect(dataProvider.getList).toHaveBeenCalledWith('users', {
                     filter: {
-                        name: 'Jane Doe',
+                        name: 'Gaurav Kumar',
                     },
                     pagination: {
                         page: 1,
@@ -111,7 +111,7 @@ describe('useUnique', () => {
             { timeout: 5000 }
         );
         await screen.findByText('Must be unique');
-        fireEvent.change(screen.getByDisplayValue('Jane Doe'), {
+        fireEvent.change(screen.getByDisplayValue('Gaurav Kumar'), {
             target: { value: 'John Doe' },
         });
         await waitFor(

@@ -22,17 +22,14 @@ import { useStore } from '../store/useStore';
  *                 English
  *             </Button>
  *             <Button disabled={locale === 'en'} onClick={() => setLocale('en')}>
- *                 French
+ *                 English
  *             </Button>
  *         </div>
  *     );
  * };
  */
 export const useLocaleState = () => {
-    const i18nProvider = useI18nProvider();
-    const defaultLocale = useMemo(
-        () => i18nProvider.getLocale(),
-        [i18nProvider]
-    );
-    return useStore<string>('locale', defaultLocale);
+  const i18nProvider = useI18nProvider();
+  const defaultLocale = useMemo(() => i18nProvider.getLocale(), [i18nProvider]);
+  return useStore<string>('locale', defaultLocale);
 };

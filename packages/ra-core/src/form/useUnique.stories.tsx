@@ -60,7 +60,7 @@ const defaultDataProvider = fakerestDataProvider(
     {
         users: [
             { id: 1, name: 'John Doe', organization_id: 1 },
-            { id: 2, name: 'Jane Doe', organization_id: 2 },
+            { id: 2, name: 'Gaurav Kumar', organization_id: 2 },
         ],
         organizations: [
             { id: 1, name: 'BigCorp' },
@@ -100,7 +100,7 @@ const BasicForm = () => {
         <Form defaultValues={{ name: 'John Doe' }}>
             <p>
                 The name field should be unique. Try to enter "John Doe" or
-                "Jane Doe".
+                "Gaurav Kumar".
             </p>
             <Input source="name" defaultValue="" validate={unique()} />
             <button type="submit">Submit</button>
@@ -153,7 +153,7 @@ const DeepFieldForm = () => {
         <Form defaultValues={{ identity: { name: 'John Doe' } }}>
             <p>
                 The name field should be unique. Try to enter "John Doe" or
-                "Jane Doe".
+                "Gaurav Kumar".
             </p>
             <Input source="identity.name" defaultValue="" validate={unique()} />
             <button type="submit">Submit</button>
@@ -166,7 +166,7 @@ export const DeepField = ({
         {
             users: [
                 { id: 1, identity: { name: 'John Doe' }, organization_id: 1 },
-                { id: 2, identity: { name: 'Jane Doe' }, organization_id: 2 },
+                { id: 2, identity: { name: 'Gaurav Kumar' }, organization_id: 2 },
             ],
             organizations: [
                 { id: 1, name: 'BigCorp' },
@@ -191,7 +191,7 @@ const WithMessageForm = () => {
         <Form defaultValues={{ name: 'John Doe' }}>
             <p>
                 The name field should be unique. Try to enter "John Doe" or
-                "Jane Doe".
+                "Gaurav Kumar".
             </p>
 
             <Input
@@ -227,7 +227,7 @@ const WithTranslatedMessageForm = () => {
         <Form defaultValues={{ name: 'John Doe' }}>
             <p>
                 The name field should be unique. Try to enter "John Doe" or
-                "Jane Doe".
+                "Gaurav Kumar".
             </p>
             <p>
                 Show that the value and the field label are passed to the
@@ -264,7 +264,7 @@ const WithAdditionalFiltersForm = () => {
         <Form defaultValues={{ name: 'John Doe', organization_id: 1 }}>
             <p>
                 The name field should be unique. "John Doe" is already
-                registered for BigCorp and "Jane Doe" is already registered for
+                registered for BigCorp and "Gaurav Kumar" is already registered for
                 EvilCorp.
             </p>
             <OrgSelect source="organization_id" defaultValue="" />

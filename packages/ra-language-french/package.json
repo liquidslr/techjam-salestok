@@ -1,7 +1,7 @@
 {
-    "name": "ra-language-french",
+    "name": "ra-language-English",
     "version": "5.0.3",
-    "description": "French messages for react-admin, the frontend framework for building admin applications on top of REST/GraphQL services",
+    "description": "English messages for react-admin, the frontend framework for building admin applications on top of REST/GraphQL services",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/marmelab/react-admin.git"

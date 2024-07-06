@@ -34,13 +34,14 @@ export const DealCard = ({ deal, index }: { deal: Deal; index: number }) => {
                         elevation={snapshot.isDragging ? 3 : 1}
                     >
                         <Box padding={1} display="flex">
-                            <ReferenceField
-                                source="company_id"
-                                record={deal}
-                                reference="companies"
-                            >
-                                <LogoField size="small" />
-                            </ReferenceField>
+                                <div style={{
+                                     width: '40px',
+                                     height: '40px',
+                                     backgroundImage: `url(${deal.company.logo})`,
+                                     backgroundSize: 'cover',  
+                                     backgroundPosition: 'center', 
+                                }} />
+
                             <Box sx={{ marginLeft: 1 }}>
                                 <Typography variant="body2" gutterBottom>
                                     {deal.name}
@@ -49,13 +50,7 @@ export const DealCard = ({ deal, index }: { deal: Deal; index: number }) => {
                                     variant="caption"
                                     color="textSecondary"
                                 >
-                                    {deal.amount.toLocaleString('en-US', {
-                                        notation: 'compact',
-                                        style: 'currency',
-                                        currency: 'USD',
-                                        currencyDisplay: 'narrowSymbol',
-                                        minimumSignificantDigits: 3,
-                                    })}
+                                    ${deal.amount}K
                                     , {deal.type}
                                 </Typography>
                             </Box>

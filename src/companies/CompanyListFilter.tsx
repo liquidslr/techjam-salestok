@@ -1,4 +1,4 @@
-/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable  */
 import * as React from 'react';
 import {
     FilterList,

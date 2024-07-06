@@ -169,7 +169,7 @@ const AllInputsBase = () => {
                         source="author_id"
                         choices={[
                             { id: 1, name: 'John Doe' },
-                            { id: 2, name: 'Jane Doe' },
+                            { id: 2, name: 'Gaurav Kumar' },
                         ]}
                         helperText="AutocompleteInput"
                     />
@@ -178,7 +178,7 @@ const AllInputsBase = () => {
                         helperText="AutocompleteArrayInput"
                         choices={[
                             { id: 1, name: 'John Doe' },
-                            { id: 2, name: 'Jane Doe' },
+                            { id: 2, name: 'Gaurav Kumar' },
                         ]}
                     />
                     <SelectInput

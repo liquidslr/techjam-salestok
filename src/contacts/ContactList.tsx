@@ -1,4 +1,4 @@
-/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable  */
 import * as React from 'react';
 import {
     BulkActionsToolbar,
@@ -12,9 +12,9 @@ import {
     SortButton,
     TopToolbar,
     useGetIdentity,
-    Exporter
+    Exporter,
 } from 'react-admin';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import {
     List,
@@ -29,31 +29,32 @@ import {
 import { Link } from 'react-router-dom';
 import { formatDistance } from 'date-fns';
 import jsonExport from 'jsonexport/dist';
-import {  useQuery } from 'react-query';
-
+import { useQuery } from 'react-query';
 
 import { Avatar } from './Avatar';
 import { ContactListFilter } from './ContactListFilter';
 import { Status } from '../misc/Status';
-import {  getUrl, request } from '../utils/network';
+import { getUrl, request } from '../utils/network';
 import { Contact, Company, Sale, Tag } from '../types';
 
 const ContactListContent = () => {
     const navigate = useNavigate();
     const fetchContacts = () => {
         const url = getUrl('crm/contacts');
-        const data = request('GET', url, null, true).then((res: any) => JSON.parse(res.data));
+        const data = request('GET', url, null, true).then((res: any) =>
+            JSON.parse(res.data)
+        );
         return data;
     };
-  
+
     const {
-      data: contacts,
-      isLoading: isPending,
-      refetch: refetchfetchContacts,
+        data: contacts,
+        isLoading: isPending,
+        refetch: refetchfetchContacts,
     } = useQuery(['contacts-listing'], fetchContacts, {
-      refetchOnWindowFocus: false,
-      refetchOnMount: true,
-      onError: (err) => console.log(err),
+        refetchOnWindowFocus: false,
+        refetchOnMount: true,
+        onError: err => console.log(err),
     });
 
     if (isPending) {
@@ -82,7 +83,9 @@ const ContactListContent = () => {
                                     disableRipple
                                     onClick={e => {
                                         // e.stopPropagation();
-                                        navigate(`/contacts/${contact.id}/show`)
+                                        navigate(
+                                            `/contacts/${contact.id}/show`
+                                        );
                                     }}
                                 />
                             </ListItemIcon>
@@ -94,7 +97,7 @@ const ContactListContent = () => {
                                 secondary={
                                     <>
                                         {contact.title} at{' '}
-                                        {contact.company.name}
+                                        {/* {contact.company.name} */}
                                     </>
                                 }
                             />

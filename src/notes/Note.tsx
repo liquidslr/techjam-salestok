@@ -158,22 +158,15 @@ export const Note = ({
                         marginBottom: 1,
                     }}
                 >
-                    <Box flex={1}>
+                    <div className='p-10'>
                         {note.text
                             .split('\n')
                             .map((paragraph: string, index: number) => (
-                                <Box
-                                    component="p"
-                                    fontFamily="fontFamily"
-                                    fontSize="body1.fontSize"
-                                    lineHeight={1.3}
-                                    marginBottom={2.4}
-                                    key={index}
-                                >
-                                    {paragraph}
-                                </Box>
+                                <div
+                                    dangerouslySetInnerHTML={{__html: paragraph}}
+                                />
                             ))}
-                    </Box>
+                    </div>
                     <Box
                         sx={{
                             marginLeft: 2,

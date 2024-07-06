@@ -13,7 +13,7 @@ import contacts from './contacts';
 import { Dashboard } from './dashboard/Dashboard';
 import { dataProvider } from './dataProvider';
 import deals from './deals';
-import './input.css'
+import './input.css';
 
 const App = () => (
     <Admin

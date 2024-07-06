@@ -26,22 +26,31 @@ export const stageChoices = stages.map(type => ({
 
 export type DealsByStage = Record<Deal['stage'], Deal[]>;
 
-export const getDealsByStage = (unorderedDeals: Deal[]) => {
+export const getDealsByStage = (unorderedDeals: Deal[] | null | undefined) => {
+    if (!Array.isArray(unorderedDeals)) {
+      return stages.reduce(
+        (obj, stage) => ({ ...obj, [stage]: [] }),
+        {} as Record<Deal['stage'], Deal[]>
+      );
+    }
+  
     const dealsByStage: Record<Deal['stage'], Deal[]> = unorderedDeals.reduce(
-        (acc, deal) => {
-            acc[deal.stage].push(deal);
-            return acc;
-        },
-        stages.reduce(
-            (obj, stage) => ({ ...obj, [stage]: [] }),
-            {} as Record<Deal['stage'], Deal[]>
-        )
+      (acc, deal) => {
+        acc[deal.stage].push(deal);
+        return acc;
+      },
+      stages.reduce(
+        (obj, stage) => ({ ...obj, [stage]: [] }),
+        {} as Record<Deal['stage'], Deal[]>
+      )
     );
-    // order each column by index
+  
+    // Order each column by index
     stages.forEach(stage => {
-        dealsByStage[stage] = dealsByStage[stage].sort(
-            (recordA: Deal, recordB: Deal) => recordA.index - recordB.index
-        );
+      dealsByStage[stage] = dealsByStage[stage].sort(
+        (recordA: Deal, recordB: Deal) => recordA.index - recordB.index
+      );
     });
+  
     return dealsByStage;
-};
+  };

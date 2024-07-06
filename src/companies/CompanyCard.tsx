@@ -3,11 +3,7 @@ import { useState } from 'react';
 import { Paper, Typography, Box } from '@mui/material';
 import ContactsIcon from '@mui/icons-material/AccountCircle';
 import DealIcon from '@mui/icons-material/MonetizationOn';
-import {
-    useCreatePath,
-    SelectField,
-    Link,
-} from 'react-admin';
+import { useCreatePath, SelectField, Link } from 'react-admin';
 
 import { sectors } from './sectors';
 import { CompanyAvatar } from './CompanyAvatar';
@@ -15,7 +11,7 @@ import { Company } from '../types';
 
 export const CompanyCard = (props: { record?: Company }) => {
     const [elevation, setElevation] = useState(1);
-    const {record} = props;
+    const { record } = props;
     const createPath = useCreatePath();
     if (!record) return null;
 
@@ -42,7 +38,15 @@ export const CompanyCard = (props: { record?: Company }) => {
                 elevation={elevation}
             >
                 <Box display="flex" flexDirection="column" alignItems="center">
-                    <CompanyAvatar record={record} />
+                    {/* <CompanyAvatar record={record} /> */}
+                    <div style={{
+                        width: '40px',
+                        height: '40px',
+                        backgroundImage: `url(${record.logo})`,
+                        backgroundSize: 'cover',  
+                        backgroundPosition: 'center', 
+                    }} />
+
                     <Box textAlign="center" marginTop={1}>
                         <Typography variant="subtitle2">
                             {record.name}
@@ -62,9 +66,7 @@ export const CompanyCard = (props: { record?: Company }) => {
                                 {record.nb_contact}
                             </Typography>
                             <Typography variant="caption" color="textSecondary">
-                                {record.nb_contact > 1
-                                    ? 'contacts'
-                                    : 'contact'}
+                                {record.nb_contact > 1 ? 'contacts' : 'contact'}
                             </Typography>
                         </div>
                     </Box>

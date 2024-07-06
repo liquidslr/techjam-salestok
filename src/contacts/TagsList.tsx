@@ -29,8 +29,12 @@ export const TagsList = (tags: any) => {
             reference="tags"
         >
             <SingleFieldList linkType={false}>
-                <ColoredChipField source={"tag.name"} variant="outlined" size="small" />
+                <ColoredChipField
+                    source={'tag.name'}
+                    variant="outlined"
+                    size="small"
+                />
             </SingleFieldList>
         </ReferenceArrayField>
-    )
+    );
 };

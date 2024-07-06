@@ -1,4 +1,4 @@
-/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable  */
 import { CompanyList } from './CompanyList';
 import { CompanyCreate } from './CompanyCreate';
 import { CompanyShow } from './CompanyShow';

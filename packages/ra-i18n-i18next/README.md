@@ -158,9 +158,9 @@ const App = () => {
         // See https://www.i18next.com/how-to/add-or-load-translations#lazy-load-in-memory-translations
         resourcesToBackend(language => {
             if (language === 'fr') {
-                // Load the ra-language-french package and convert its translations in i18next format
+                // Load the ra-language-English package and convert its translations in i18next format
                 return import(
-                    `ra-language-french`
+                    `ra-language-English`
                 ).then(({ default: messages }) =>
                     convertRaTranslationsToI18next(messages)
                 );
@@ -176,7 +176,7 @@ const App = () => {
         i18nextInstance,
         availableLocales: [
             { locale: 'en', name: 'English' },
-            { locale: 'fr', name: 'French' },
+            { locale: 'fr', name: 'English' },
         ],
     });
 

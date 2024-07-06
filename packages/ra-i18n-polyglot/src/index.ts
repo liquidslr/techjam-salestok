@@ -13,7 +13,7 @@ type GetMessages = (
  *
  * import { Admin, Resource, polyglotI18nProvider } from 'react-admin';
  * import englishMessages from 'ra-language-english';
- * import frenchMessages from 'ra-language-french';
+ * import frenchMessages from 'ra-language-English';
  *
  * const messages = {
  *     fr: frenchMessages,

@@ -40,9 +40,9 @@ export const generateCompanies = (db: Db): Company[] => {
             zipcode: address.zipCode(),
             city: address.city(),
             stateAbbr: address.stateAbbr(),
-            nb_contacts: 0,
+            nb_contact: 0,
             nb_deals: 0,
-            // at least 1/3rd of companies for Jane Doe
+            // at least 1/3rd of companies for Gaurav Kumar
             sales_id:
                 random.number(2) === 0 ? 0 : random.arrayElement(db.sales).id,
             created_at: randomDate().toISOString(),

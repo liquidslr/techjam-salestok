@@ -3,12 +3,12 @@ import { Box } from '@mui/material';
 import isEqual from 'lodash/isEqual';
 import { useEffect, useState } from 'react';
 import { DataProvider, useDataProvider, useListContext } from 'react-admin';
-import {  useQuery } from 'react-query';
+import { useQuery } from 'react-query';
 
 import { Deal } from '../types';
 import { DealColumn } from './DealColumn';
 import { DealsByStage, getDealsByStage, stages } from './stages';
-import {  getUrl, request } from '../utils/network';
+import { getUrl, request } from '../utils/network';
 
 export const DealListContent = () => {
     // const { data: unorderedDeals, isPending, refetch } = useListContext<Deal>();
@@ -20,23 +20,21 @@ export const DealListContent = () => {
 
     const fetchDeals = () => {
         const url = getUrl(`crm/deals/`);
-        const data = request('GET', url, null, true).then((res: any) => JSON.parse(res.data));
+        const data = request('GET', url, null, true).then((res: any) =>
+            JSON.parse(res.data)
+        );
         return data;
     };
-  
+
     const {
-      data: unorderedDeals,
-      isLoading: isPending,
-      refetch: refetchDeals,
+        data: unorderedDeals,
+        isLoading: isPending,
+        refetch: refetchDeals,
     } = useQuery(['contact-details'], fetchDeals, {
-      refetchOnWindowFocus: false,
-      refetchOnMount: true,
-      onError: (err) => console.log(err),
+        refetchOnWindowFocus: false,
+        refetchOnMount: true,
+        onError: err => console.log(err),
     });
-
-    console.log(unorderedDeals, "deals orig")
-    // console.log(record, "deals fet")
-
 
     useEffect(() => {
         if (unorderedDeals) {
@@ -45,7 +43,6 @@ export const DealListContent = () => {
                 setDealsByStage(newDealsByStage);
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [unorderedDeals]);
 
     if (isPending) return null;
@@ -86,7 +83,8 @@ export const DealListContent = () => {
 
         // persist the changes
         updateDealStage(sourceDeal, destinationDeal, dataProvider).then(() => {
-            refetch();
+            console.log("here")
+            // refetchDeals();
         });
     };
 

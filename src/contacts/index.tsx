@@ -1,4 +1,4 @@
-/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable  */
 import { ContactShow } from './ContactShow';
 import { ContactList } from './ContactList';
 import { ContactEdit } from './ContactEdit';

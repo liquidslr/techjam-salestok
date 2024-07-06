@@ -1,9 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable indent */
 import axios from 'axios';
 
 export const TOKEN_TYPE = 'user-auth-token';
@@ -43,7 +37,7 @@ export function request(
   url,
   data,
   authorized = true,
-  contentType = 'application/json',
+  contentType = 'application/json'
 ) {
   return new Promise((resolve, reject) => {
     const headers = {
@@ -60,7 +54,6 @@ export function request(
       responseType: 'text/json',
     })
       .then((res) => {
-        console.log(res, "reposne")
         resolve(res);
       })
       .catch((err) => {
@@ -93,6 +86,7 @@ const get_base_api = () => {
   if (process.env.REACT_ENV) {
     env = process.env.REACT_ENV;
   }
+  // return 'https://asdf.today';
   return 'http://localhost:8000';
 };
 

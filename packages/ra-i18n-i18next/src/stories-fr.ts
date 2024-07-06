@@ -1,4 +1,4 @@
-import raMessages from 'ra-language-french';
+import raMessages from 'ra-language-English';
 import { TranslationMessages } from 'ra-core';
 
 export default {

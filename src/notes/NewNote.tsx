@@ -23,7 +23,7 @@ export const NewNote = ({
 }) => {
     const resource = useResourceContext();
     const record = useRecordContext();
-    const { refetch } = useListContext();
+    // const { refetch } = useListContext();
     const [text, setText] = useState('');
     const [status, setStatus] = useState(record && record.status);
     const [date, setDate] = useState(getCurrentDate());
@@ -51,7 +51,6 @@ export const NewNote = ({
                 onSuccess: () => {
                     setText('');
                     notify('Note added successfully');
-                    refetch();
                     update(reference, {
                         id: (record && record.id) as unknown as Identifier,
                         data: { last_seen: date, status },

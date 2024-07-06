@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
         <Box component="nav" sx={{ flexGrow: 1 }}>
-            <AppBar position="static"  sx={{backgroundColor: '#8296A9'}}>
+            <AppBar position="static" sx={{ backgroundColor: '#333333' }}>
                 <Toolbar variant="dense">
                     <Box flex={1} display="flex" justifyContent="space-between">
                         <Box display="flex" alignItems="center">

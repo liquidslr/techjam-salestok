@@ -39,7 +39,7 @@ import localforage from 'localforage';
  *     ],
  *     comments: [
  *       { id: 0, post_id: 0, author: 'John Doe', body: 'Sensational!' },
- *       { id: 1, post_id: 0, author: 'Jane Doe', body: 'I agree' },
+ *       { id: 1, post_id: 0, author: 'Gaurav Kumar', body: 'I agree' },
  *     ],
  *   }
  * });

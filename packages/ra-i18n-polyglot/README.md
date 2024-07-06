@@ -19,7 +19,7 @@ import * as React from "react";
 import { Admin, Resource } from 'react-admin';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import englishMessages from 'ra-language-english';
-import frenchMessages from 'ra-language-french';
+import frenchMessages from 'ra-language-English';
 
 const messages = {
     fr: frenchMessages,
@@ -73,7 +73,7 @@ import polyglotI18nProvider from 'ra-i18n-polyglot';
 import englishMessages from 'ra-language-english';
 
 const asyncMessages = {
-    fr: () => import('ra-language-french').then(messages => messages.default),
+    fr: () => import('ra-language-English').then(messages => messages.default),
     it: () => import('ra-language-italian').then(messages => messages.default),
 };
 

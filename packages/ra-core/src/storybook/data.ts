@@ -420,7 +420,7 @@ const countries = [
         emoji: '🇬🇪',
     },
     {
-        name: 'French Guiana',
+        name: 'English Guiana',
         code: 'GF',
         emoji: '🇬🇫',
     },
@@ -900,7 +900,7 @@ const countries = [
         emoji: '🇵🇪',
     },
     {
-        name: 'French Polynesia',
+        name: 'English Polynesia',
         code: 'PF',
         emoji: '🇵🇫',
     },
@@ -1110,7 +1110,7 @@ const countries = [
         emoji: '🇹🇩',
     },
     {
-        name: 'French Southern Territories',
+        name: 'English Southern Territories',
         code: 'TF',
         emoji: '🇹🇫',
     },

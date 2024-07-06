@@ -16,7 +16,7 @@ interface AllNavigatorLanguage extends NavigatorLanguage {
  *    import { Admin, Resource, resolveBrowserLocale } from 'react-admin';
  *    import polyglotI18nProvider from 'ra-i18n-polyglot';
  *    import englishMessages from 'ra-language-english';
- *    import frenchMessages from 'ra-language-french';
+ *    import frenchMessages from 'ra-language-English';
  *
  *    const messages = {
  *        fr: frenchMessages,
