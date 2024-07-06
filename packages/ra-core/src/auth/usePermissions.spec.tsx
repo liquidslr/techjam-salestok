@@ -1,0 +1,135 @@
+import * as React from 'react';
+import expect from 'expect';
+import { waitFor, render, screen } from '@testing-library/react';
+import { CoreAdminContext } from '../core/CoreAdminContext';
+
+import usePermissions from './usePermissions';
+import { QueryClient } from '@tanstack/react-query';
+
+const UsePermissions = ({ children }: any) => {
+    const permissionQueryParams = {
+        retry: false,
+    };
+    const res = usePermissions({}, permissionQueryParams);
+    return children(res);
+};
+
+const stateInpector = state => (
+    <div>
+        <span>{state.isPending && 'LOADING'}</span>
+        {state.permissions && <span>PERMISSIONS: {state.permissions}</span>}
+        <span>{state.error && 'ERROR'}</span>
+    </div>
+);
+
+describe('usePermissions', () => {
+    it('should return a loading state on mount', () => {
+        render(
+            <CoreAdminContext>
+                <UsePermissions>{stateInpector}</UsePermissions>
+            </CoreAdminContext>
+        );
+        expect(screen.queryByText('LOADING')).not.toBeNull();
+        expect(screen.queryByText('AUTHENTICATED')).toBeNull();
+    });
+
+    it('should return nothing by default after a tick', async () => {
+        render(
+            <CoreAdminContext>
+                <UsePermissions>{stateInpector}</UsePermissions>
+            </CoreAdminContext>
+        );
+        await waitFor(() => {
+            expect(screen.queryByText('LOADING')).toBeNull();
+        });
+    });
+
+    it('should return the permissions after a tick', async () => {
+        const authProvider = {
+            login: () => Promise.reject('bad method'),
+            logout: () => Promise.reject('bad method'),
+            checkAuth: () => Promise.reject('bad method'),
+            checkError: () => Promise.reject('bad method'),
+            getPermissions: () => Promise.resolve('admin'),
+        };
+        render(
+            <CoreAdminContext authProvider={authProvider}>
+                <UsePermissions>{stateInpector}</UsePermissions>
+            </CoreAdminContext>
+        );
+        await waitFor(() => {
+            expect(screen.queryByText('LOADING')).toBeNull();
+            expect(screen.queryByText('PERMISSIONS: admin')).not.toBeNull();
+        });
+    });
+
+    it('should return an error after a tick if the auth.getPermissions call fails and checkError resolves', async () => {
+        const authProvider = {
+            login: () => Promise.reject('bad method'),
+            logout: () => Promise.reject('bad method'),
+            checkAuth: () => Promise.reject('bad method'),
+            checkError: () => Promise.resolve(),
+            getPermissions: () => Promise.reject('not good'),
+        };
+        render(
+            <CoreAdminContext authProvider={authProvider}>
+                <UsePermissions>{stateInpector}</UsePermissions>
+            </CoreAdminContext>
+        );
+        await waitFor(() => {
+            expect(screen.queryByText('LOADING')).toBeNull();
+            expect(screen.queryByText('ERROR')).not.toBeNull();
+        });
+    });
+
+    it('should call logout when the auth.getPermissions call fails and checkError rejects', async () => {
+        const authProvider = {
+            login: () => Promise.reject('bad method'),
+            logout: jest.fn(() => Promise.resolve()),
+            checkAuth: () => Promise.reject('bad method'),
+            checkError: () => Promise.reject(),
+            getPermissions: () => Promise.reject('not good'),
+        };
+        render(
+            <CoreAdminContext authProvider={authProvider}>
+                <UsePermissions>{stateInpector}</UsePermissions>
+            </CoreAdminContext>
+        );
+        await waitFor(() => {
+            expect(screen.queryByText('LOADING')).toBeNull();
+        });
+        expect(authProvider.logout).toHaveBeenCalled();
+    });
+
+    it('should abort the request if the query is canceled', async () => {
+        const abort = jest.fn();
+        const authProvider = {
+            getPermissions: jest.fn(
+                ({ signal }) =>
+                    new Promise(() => {
+                        signal.addEventListener('abort', () => {
+                            abort(signal.reason);
+                        });
+                    })
+            ) as any,
+        } as any;
+        const queryClient = new QueryClient();
+        render(
+            <CoreAdminContext
+                authProvider={authProvider}
+                queryClient={queryClient}
+            >
+                <UsePermissions>{stateInpector}</UsePermissions>
+            </CoreAdminContext>
+        );
+        await waitFor(() => {
+            expect(authProvider.getPermissions).toHaveBeenCalled();
+        });
+        queryClient.cancelQueries({
+            queryKey: ['auth', 'getPermissions'],
+        });
+        await waitFor(() => {
+            expect(abort).toHaveBeenCalled();
+        });
+    });
+});

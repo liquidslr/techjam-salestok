@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "test": "vitest"
+    },
+    "dependencies": {
+        "ra-data-fakerest": "^5.0.0"
+    },
+    "devDependencies": {
+        "@testing-library/react": "^15.0.7",
+        "jsdom": "^23.1.0",
+        "vitest": "^1.1.3"
+    }
+}

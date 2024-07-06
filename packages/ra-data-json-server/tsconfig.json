@@ -1,0 +1,11 @@
+{
+    
+    "compilerOptions": {
+        "outDir": "lib",
+        "rootDir": "src",
+        "allowJs": false,
+        "strictNullChecks": true
+    },
+    "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js"],
+    "include": ["src"]
+}
