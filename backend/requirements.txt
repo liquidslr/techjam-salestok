@@ -1,0 +1,11 @@
+django
+djangorestframework
+daphne
+django-cors-headers
+channels
+twilio
+pillow
+django-redis
+vosk
+gunicorn
+channels_redis

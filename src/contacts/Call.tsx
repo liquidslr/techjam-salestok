@@ -210,7 +210,7 @@ const Call = () => {
   const color = getBackgroundColor(sentiment);
 
   return (
-    <div className="border p-4 shadow-lg ">
+    <div className="border p-4 shadow-lg">
       {/* <MicrophoneControl /> */}
       <div className="flex flex-row justify-between w-full">
         <div className="flex flex-col justify-center">

@@ -118,7 +118,7 @@ const ContactShowContent = () => {
     loadSummary,
     {
       onSuccess: () => {
-        refetchCallRecordings();
+        window.location.reload();
       },
       onError: (err) => {
         console.log(err, 'error');
@@ -233,7 +233,7 @@ const ContactShowContent = () => {
                       className="px-6 hover:cursor-pointer"
                       onClick={() => reloadData(recordingData.id)}
                     >
-                      {realoadLoading ? 'Loading' : 'Reload'}
+                      {realoadLoading ? 'Loading' : 'Analyze'}
                     </div>
                   </div>
                 </Box>

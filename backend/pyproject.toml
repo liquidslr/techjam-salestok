@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["Gaurav Kumar <gaurav.kumar9825@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10.4"
+django = "^5.0.6"
+djangorestframework = "^3.15.2"
+daphne = "^4.1.2"
+django-cors-headers = "^4.4.0"
+channels = "^4.1.0"
+twilio = "^9.2.3"
+pillow = "^10.4.0"
+django-redis = "^5.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

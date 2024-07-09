@@ -107,7 +107,7 @@ export const ContactAside: React.FC<ContactAsideProps> = ({
         {/* <Typography component="span" variant="body2" color="textSecondary">
           Followed by
         </Typography>{' '} */}
-        {`${record.first_name} ${record.last_name}`}
+        {/* {`${record.first_name} ${record.last_name}`} */}
       </Box>
       <Box mb={3}>
         <Typography variant="subtitle2">Tags</Typography>
